@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.0.0 — 2026-10-29
+## 1.0.0 — 2026-10-30
+
+Released on GitHub, PyPI (`pip install periorisk`) and Zenodo
+([doi:10.5281/zenodo.23813179](https://doi.org/10.5281/zenodo.23813179); all versions:
+[doi:10.5281/zenodo.23813178](https://doi.org/10.5281/zenodo.23813178)).
 
 First public release. The trained model is unchanged from the author's original pipeline (identical
 predictions for all 10,660 participants); this release reviews, fixes and extends it.

@@ -17,6 +17,7 @@ package and a one-command reproducible pipeline.
 [![Tests](https://github.com/Hezarani/periorisk/actions/workflows/tests.yml/badge.svg)](https://github.com/Hezarani/periorisk/actions/workflows/tests.yml)
 [![Live demo](https://img.shields.io/badge/demo-in%20your%20browser-9b2d4b.svg)](https://hezarani.github.io/periorisk/)
 [![TRIPOD+AI](https://img.shields.io/badge/reporting-TRIPOD%2BAI-9b2d4b.svg)](https://github.com/Hezarani/periorisk/blob/main/TRIPOD-AI.md)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23813178.svg)](https://doi.org/10.5281/zenodo.23813178)
 
 > ⚠️ **Educational and research tool — not a diagnosis and not a medical device.** Only a
 > periodontal examination with a probe can confirm gum disease. Anyone whose gums bleed, are swollen
@@ -248,8 +249,26 @@ MODEL_CARD.md · TRIPOD-AI.md · paper.md · CITATION.cff
 
 ## Citation and licence
 
-If you use PerioRisk, please cite it with GitHub's **"Cite this repository"** button (from
-[`CITATION.cff`](https://github.com/Hezarani/periorisk/blob/main/CITATION.cff)).
+If you use PerioRisk, please cite it (or use GitHub's **"Cite this repository"** button, from
+[`CITATION.cff`](https://github.com/Hezarani/periorisk/blob/main/CITATION.cff)):
+
+> Boustani Hezarani H. *PerioRisk: periodontitis risk screening from self-reported questions*
+> (software). Zenodo; 2026. [doi:10.5281/zenodo.23813178](https://doi.org/10.5281/zenodo.23813178)
+
+```bibtex
+@software{boustani_hezarani_periorisk,
+  author    = {Boustani Hezarani, Hossein},
+  title     = {{PerioRisk: periodontitis risk screening from self-reported questions}},
+  year      = {2026},
+  publisher = {Zenodo},
+  version   = {1.0.0},
+  doi       = {10.5281/zenodo.23813178},
+  url       = {https://doi.org/10.5281/zenodo.23813178}
+}
+```
+
+The DOI above always points to the latest version. Version 1.0.0 itself is
+[doi:10.5281/zenodo.23813179](https://doi.org/10.5281/zenodo.23813179).
 
 Code: MIT License © 2026 Hossein Boustani Hezarani, DDS
 ([ORCID 0009-0007-8481-0498](https://orcid.org/0009-0007-8481-0498)). NHANES data: public domain

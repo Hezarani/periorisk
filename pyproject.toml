@@ -41,6 +41,7 @@ Repository = "https://github.com/Hezarani/periorisk"
 "Live demo" = "https://hezarani.github.io/periorisk/"
 Issues = "https://github.com/Hezarani/periorisk/issues"
 Changelog = "https://github.com/Hezarani/periorisk/blob/main/CHANGELOG.md"
+DOI = "https://doi.org/10.5281/zenodo.23813178"
 
 [project.scripts]
 periorisk = "periorisk.cli:main"

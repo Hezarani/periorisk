@@ -17,8 +17,19 @@ authors:
     orcid: "https://orcid.org/0009-0007-8481-0498"
     affiliation: "Independent researcher, Ankara, Türkiye"
 version: "1.0.0"
-date-released: "2026-10-29"
+date-released: "2026-10-30"
 license: MIT
+doi: 10.5281/zenodo.23813178
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23813178
+    description: "Concept DOI — all versions (cite this)"
+  - type: doi
+    value: 10.5281/zenodo.23813179
+    description: "Version DOI — release 1.0.0"
+  - type: url
+    value: "https://pypi.org/project/periorisk/"
+    description: "Python package"
 repository-code: "https://github.com/Hezarani/periorisk"
 url: "https://hezarani.github.io/periorisk/"
 keywords:
