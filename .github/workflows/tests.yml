@@ -1,0 +1,40 @@
+name: tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_call:        # publish.yml runs these same tests before anything is uploaded
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    # The periorisk package has no dependencies: test it on every supported Python version,
+    # including the Python <-> JavaScript (web app) parity tests.
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -e ".[test]"
+      - run: python -m pytest -q
+
+  training:
+    # The training pipeline's checks (case definition, NHANES coding, statistics) and the
+    # scikit-learn model itself, with the exact versions used to train it.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements-training.txt pytest -e .
+      - run: python -m pytest -q tests/test_training.py
