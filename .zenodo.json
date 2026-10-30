@@ -1,0 +1,53 @@
+{
+  "title": "PerioRisk: periodontitis risk screening from self-reported questions",
+  "description": "PerioRisk estimates the probability of moderate or severe periodontitis (CDC/AAP surveillance case definition) from 14 self-reported questions that follow the NHANES wording. A calibrated gradient-boosting model was developed on NHANES 2009–2012 (n = 7,050) and temporally validated on NHANES 2013–2014 (n = 3,610): AUC 0.781 (95% CI 0.766–0.796), calibration slope 0.91, observed/expected ratio 0.90; survey-weighted AUC 0.785 with design-based confidence intervals. Decision-curve, subgroup (fairness) and transportability analyses are reported following TRIPOD+AI. The fitted model is exported to a portable JSON format and re-implemented in pure Python and JavaScript, reproducing scikit-learn's predictions for all 10,660 participants to within 1e-12. It ships as a dependency-free Python package and command-line tool (pip install periorisk), a private in-browser application (answers never leave the device) and a one-command pipeline that rebuilds the published model exactly from public CDC data. Educational and research tool; not a diagnosis or a medical device.",
+  "upload_type": "software",
+  "license": "mit",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Boustani Hezarani, Hossein",
+      "orcid": "0009-0007-8481-0498",
+      "affiliation": "Independent researcher, Ankara, Türkiye"
+    }
+  ],
+  "keywords": [
+    "periodontitis",
+    "periodontal disease",
+    "screening",
+    "risk prediction",
+    "self-report",
+    "NHANES",
+    "clinical prediction model",
+    "TRIPOD+AI",
+    "calibration",
+    "dental public health",
+    "machine learning"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://hezarani.github.io/periorisk/",
+      "relation": "isDocumentedBy",
+      "resource_type": "other"
+    },
+    {
+      "identifier": "https://pypi.org/project/periorisk/",
+      "relation": "isIdenticalTo",
+      "resource_type": "software"
+    }
+  ],
+  "references": [
+    "Page RC, Eke PI (2007). Case definitions for use in population-based surveillance of periodontitis. J Periodontol 78(7 Suppl):1387–1399. doi:10.1902/jop.2007.060264",
+    "Eke PI, Page RC, Wei L, Thornton-Evans G, Genco RJ (2012). Update of the case definitions for population-based surveillance of periodontitis. J Periodontol 83(12):1449–1454. doi:10.1902/jop.2012.110664",
+    "Eke PI, Dye B (2009). Assessment of self-report measures for predicting population prevalence of periodontitis. J Periodontol 80(9):1371–1379. doi:10.1902/jop.2009.080607",
+    "Eke PI, Dye BA, Wei L, et al. (2013). Self-reported measures for surveillance of periodontitis. J Dent Res 92(11):1041–1047. doi:10.1177/0022034513505621",
+    "Eke PI, Thornton-Evans GO, Wei L, Borgnakke WS, Dye BA, Genco RJ (2018). Periodontitis in US adults: NHANES 2009–2014. J Am Dent Assoc 149(7):576–588.e6. doi:10.1016/j.adaj.2018.04.023",
+    "Eke PI, Wei L, Thornton-Evans G, Borgnakke WS (2025). Scoring algorithm for predicting periodontitis in dentate adults using self-report measures — NHANES 2009–2012. Periodontol 2000 98(1):7–19. doi:10.1111/prd.12624",
+    "Montero E, Herrera D, Sanz M, Dhir S, Van Dyke T, Sima C (2019). Development and validation of a predictive model for periodontitis using NHANES 2011–2012 data. J Clin Periodontol 46(4):420–429. doi:10.1111/jcpe.13098",
+    "Bi M, Xie Y, Yu X, Li H, Li Y, Tonetti MS (2025). Diagnostic accuracy of self-reported questionnaires for detecting periodontitis across multiple cultures and geographic locations: a systematic review and meta-analysis. J Clin Periodontol 52(11):1510–1528. doi:10.1111/jcpe.70002",
+    "Collins GS, Moons KGM, Dhiman P, et al. (2024). TRIPOD+AI statement. BMJ 385:e078378. doi:10.1136/bmj-2023-078378",
+    "Van Calster B, McLernon DJ, van Smeden M, Wynants L, Steyerberg EW (2019). Calibration: the Achilles heel of predictive analytics. BMC Med 17:230. doi:10.1186/s12916-019-1466-7",
+    "Vickers AJ, Elkin EB (2006). Decision curve analysis. Med Decis Making 26(6):565–574. doi:10.1177/0272989X06295361",
+    "Saerens M, Latinne P, Decaestecker C (2002). Adjusting the outputs of a classifier to new a priori probabilities: a simple procedure. Neural Comput 14(1):21–41. doi:10.1162/089976602753284446"
+  ]
+}
