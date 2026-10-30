@@ -1,0 +1,9 @@
+# Exact versions used to train the published model (Python 3.12).
+# Only needed to re-run the training pipeline:   python -m training
+# The periorisk package itself has no dependencies.
+scikit-learn==1.8.0
+numpy==2.4.4
+pandas==3.0.2
+joblib==1.5.3
+SQLAlchemy==2.1.1
+matplotlib==3.10.8

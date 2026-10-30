@@ -1,0 +1,192 @@
+{
+  "model_version": "1.0.0",
+  "model_date": "2026-09-29",
+  "selected_model": "Gradient Boosting",
+  "calibrated": true,
+  "threshold": 0.46983205431700953,
+  "risk_bands": [
+    {
+      "band": "low",
+      "from": 0.0,
+      "to": 0.3,
+      "test_n": 1157,
+      "test_observed": 0.1694036300777874,
+      "test_mean_predicted": 0.17105951577688278
+    },
+    {
+      "band": "moderate",
+      "from": 0.3,
+      "to": 0.6,
+      "test_n": 1115,
+      "test_observed": 0.3739910313901345,
+      "test_mean_predicted": 0.4446376591989931
+    },
+    {
+      "band": "high",
+      "from": 0.6,
+      "to": 1.0,
+      "test_n": 1338,
+      "test_observed": 0.6980568011958147,
+      "test_mean_predicted": 0.7617440177416894
+    }
+  ],
+  "features": [
+    "age",
+    "bmi",
+    "gum_health_rating",
+    "floss_days",
+    "mouthwash_days",
+    "male",
+    "ever_treated_gum_disease",
+    "ever_loose_teeth",
+    "told_bone_loss",
+    "teeth_dont_look_right",
+    "education",
+    "smoking",
+    "diabetes"
+  ],
+  "target": "Moderate or severe periodontitis (CDC/AAP case definition)",
+  "train_data": "NHANES 2009-2010 and 2011-2012",
+  "test_data": "NHANES 2013-2014 (temporal hold-out)",
+  "n_train": 7050,
+  "n_test": 3610,
+  "prevalence_train": 0.48652482269503544,
+  "prevalence_test": 0.42853185595567866,
+  "scikit_learn_version": "1.8.0",
+  "test_metrics": {
+    "threshold": 0.46983205431700953,
+    "auc": 0.781078164514622,
+    "auc_ci_low": 0.7663587397952858,
+    "auc_ci_high": 0.7956914722979136,
+    "recall_sensitivity": 0.7343244990303813,
+    "specificity": 0.6800775569558895,
+    "precision_ppv": 0.6325167037861915,
+    "npv": 0.7734288864388092,
+    "accuracy": 0.7033240997229917,
+    "f1": 0.6796290756805264,
+    "brier": 0.19048663925139553,
+    "scaled_brier": 0.2221615957744394,
+    "tn": 1403,
+    "fp": 660,
+    "fn": 411,
+    "tp": 1136,
+    "o_e_ratio": 0.9031465280890171,
+    "calibration_intercept": -0.25405175024110754,
+    "calibration_slope": 0.9087457131326011
+  },
+  "test_metrics_ci": {
+    "recall_sensitivity": [
+      0.7118091672004964,
+      0.7551026949241234
+    ],
+    "specificity": [
+      0.6581055425914231,
+      0.7020998596308414
+    ],
+    "precision_ppv": [
+      0.6085973078742042,
+      0.6565836465843228
+    ],
+    "npv": [
+      0.7530131197048797,
+      0.7923084397556912
+    ],
+    "brier": [
+      0.18382470270788642,
+      0.19796812167179506
+    ],
+    "o_e_ratio": [
+      0.873985034227319,
+      0.9347680851226612
+    ],
+    "calibration_intercept": [
+      -0.3320116225621054,
+      -0.17132809028563095
+    ],
+    "calibration_slope": [
+      0.838559676754696,
+      0.979436514718975
+    ]
+  },
+  "survey_weighted_test_metrics": {
+    "prevalence": {
+      "estimate": 0.34345951777490613,
+      "ci": [
+        0.3008943924254356,
+        0.3942265035765428
+      ]
+    },
+    "auc": {
+      "estimate": 0.7852965448562941,
+      "ci": [
+        0.7597724386042944,
+        0.8069901633358746
+      ]
+    },
+    "brier": {
+      "estimate": 0.18195691628606503,
+      "ci": [
+        0.17227255909695657,
+        0.19355183518936994
+      ]
+    },
+    "recall_sensitivity": {
+      "estimate": 0.7001502338798555,
+      "ci": [
+        0.6699273959255386,
+        0.728469125923857
+      ]
+    },
+    "specificity": {
+      "estimate": 0.7249488074641225,
+      "ci": [
+        0.7015160611859105,
+        0.7446294435156162
+      ]
+    },
+    "precision_ppv": {
+      "estimate": 0.571120099969165,
+      "ci": [
+        0.5274162218283056,
+        0.6169139681620708
+      ]
+    },
+    "npv": {
+      "estimate": 0.8221137659338107,
+      "ci": [
+        0.7801610279871782,
+        0.854329627328929
+      ]
+    },
+    "accuracy": {
+      "estimate": 0.7164315013393646,
+      "ci": [
+        0.6961409274734305,
+        0.7337986801336436
+      ]
+    },
+    "o_e_ratio": {
+      "estimate": 0.7985691748878676,
+      "ci": [
+        0.7226306412950847,
+        0.882062321467539
+      ]
+    },
+    "calibration_intercept": {
+      "estimate": -0.48727305146574734,
+      "ci": [
+        -0.6720487734731744,
+        -0.29056049183062643
+      ]
+    },
+    "calibration_slope": {
+      "estimate": 0.9717274645538775,
+      "ci": [
+        0.8655826857809407,
+        1.0743827131545998
+      ]
+    },
+    "n_replicates": 1000,
+    "n_strata": 15
+  }
+}

@@ -1,0 +1,690 @@
+{
+  "cohort_flow": {
+    "periodontal_file_rows": 14071,
+    "exam_complete": 11753,
+    "excluded_exam_partial": 210,
+    "excluded_exam_not_done": 2108,
+    "age_30_plus": 11753,
+    "excluded_no_teeth_measured": 1070,
+    "excluded_one_tooth_measured": 23,
+    "two_or_more_teeth_measured": 10660,
+    "events_development": 3430,
+    "events_evaluation": 1547
+  },
+  "weighted_prevalence": {
+    "total_periodontitis": 0.42319806254471054,
+    "moderate_or_severe": 0.3796283946921821,
+    "severe": 0.07831273268979062
+  },
+  "final_model": "Gradient Boosting",
+  "threshold": 0.46983205431700953,
+  "final_test_metrics": {
+    "threshold": 0.46983205431700953,
+    "auc": 0.781078164514622,
+    "auc_ci_low": 0.7663587397952858,
+    "auc_ci_high": 0.7956914722979136,
+    "recall_sensitivity": 0.7343244990303813,
+    "specificity": 0.6800775569558895,
+    "precision_ppv": 0.6325167037861915,
+    "npv": 0.7734288864388092,
+    "accuracy": 0.7033240997229917,
+    "f1": 0.6796290756805264,
+    "brier": 0.19048663925139553,
+    "scaled_brier": 0.2221615957744394,
+    "tn": 1403,
+    "fp": 660,
+    "fn": 411,
+    "tp": 1136,
+    "o_e_ratio": 0.9031465280890171,
+    "calibration_intercept": -0.25405175024110754,
+    "calibration_slope": 0.9087457131326011
+  },
+  "final_test_metrics_ci": {
+    "recall_sensitivity": [
+      0.7118091672004964,
+      0.7551026949241234
+    ],
+    "specificity": [
+      0.6581055425914231,
+      0.7020998596308414
+    ],
+    "precision_ppv": [
+      0.6085973078742042,
+      0.6565836465843228
+    ],
+    "npv": [
+      0.7530131197048797,
+      0.7923084397556912
+    ],
+    "brier": [
+      0.18382470270788642,
+      0.19796812167179506
+    ],
+    "o_e_ratio": [
+      0.873985034227319,
+      0.9347680851226612
+    ],
+    "calibration_intercept": [
+      -0.3320116225621054,
+      -0.17132809028563095
+    ],
+    "calibration_slope": [
+      0.838559676754696,
+      0.979436514718975
+    ]
+  },
+  "survey_weighted_test_metrics": {
+    "prevalence": {
+      "estimate": 0.34345951777490613,
+      "ci": [
+        0.3008943924254356,
+        0.3942265035765428
+      ]
+    },
+    "auc": {
+      "estimate": 0.7852965448562941,
+      "ci": [
+        0.7597724386042944,
+        0.8069901633358746
+      ]
+    },
+    "brier": {
+      "estimate": 0.18195691628606503,
+      "ci": [
+        0.17227255909695657,
+        0.19355183518936994
+      ]
+    },
+    "recall_sensitivity": {
+      "estimate": 0.7001502338798555,
+      "ci": [
+        0.6699273959255386,
+        0.728469125923857
+      ]
+    },
+    "specificity": {
+      "estimate": 0.7249488074641225,
+      "ci": [
+        0.7015160611859105,
+        0.7446294435156162
+      ]
+    },
+    "precision_ppv": {
+      "estimate": 0.571120099969165,
+      "ci": [
+        0.5274162218283056,
+        0.6169139681620708
+      ]
+    },
+    "npv": {
+      "estimate": 0.8221137659338107,
+      "ci": [
+        0.7801610279871782,
+        0.854329627328929
+      ]
+    },
+    "accuracy": {
+      "estimate": 0.7164315013393646,
+      "ci": [
+        0.6961409274734305,
+        0.7337986801336436
+      ]
+    },
+    "o_e_ratio": {
+      "estimate": 0.7985691748878676,
+      "ci": [
+        0.7226306412950847,
+        0.882062321467539
+      ]
+    },
+    "calibration_intercept": {
+      "estimate": -0.48727305146574734,
+      "ci": [
+        -0.6720487734731744,
+        -0.29056049183062643
+      ]
+    },
+    "calibration_slope": {
+      "estimate": 0.9717274645538775,
+      "ci": [
+        0.8655826857809407,
+        1.0743827131545998
+      ]
+    },
+    "n_replicates": 1000,
+    "n_strata": 15
+  },
+  "all_models": {
+    "Logistic Regression": {
+      "threshold": 0.4530595272054858,
+      "auc": 0.7777162246381828,
+      "auc_ci_low": 0.7623930004827165,
+      "auc_ci_high": 0.7924034317696925,
+      "recall_sensitivity": 0.7407886231415644,
+      "specificity": 0.679108095007271,
+      "precision_ppv": 0.6338495575221239,
+      "npv": 0.7774694783573807,
+      "accuracy": 0.7055401662049862,
+      "f1": 0.6831594634873324,
+      "brier": 0.1914010262508915,
+      "scaled_brier": 0.2184277626440545,
+      "tn": 1401,
+      "fp": 662,
+      "fn": 401,
+      "tp": 1146,
+      "o_e_ratio": 0.9056982279557952,
+      "calibration_intercept": -0.2467268321776456,
+      "calibration_slope": 0.8888002261105462,
+      "cv_auc": 0.8003660422337837,
+      "best_params": {
+        "C": 10.0
+      }
+    },
+    "Random Forest": {
+      "threshold": 0.4896350455544464,
+      "auc": 0.7818212411180961,
+      "auc_ci_low": 0.7673375895416584,
+      "auc_ci_high": 0.7962296461170912,
+      "recall_sensitivity": 0.7310924369747899,
+      "specificity": 0.6883179835191469,
+      "precision_ppv": 0.6375422773393461,
+      "npv": 0.7734204793028322,
+      "accuracy": 0.7066481994459833,
+      "f1": 0.6811201445347786,
+      "brier": 0.19075402937003635,
+      "scaled_brier": 0.2210697275782938,
+      "tn": 1420,
+      "fp": 643,
+      "fn": 416,
+      "tp": 1131,
+      "o_e_ratio": 0.9014105873696442,
+      "calibration_intercept": -0.23130612767608358,
+      "calibration_slope": 1.211130433412142,
+      "cv_auc": 0.7995117423449253,
+      "best_params": {
+        "max_features": "sqrt",
+        "min_samples_leaf": 25
+      }
+    },
+    "Gradient Boosting": {
+      "threshold": 0.4617003287794671,
+      "auc": 0.7807909919626153,
+      "auc_ci_low": 0.7658834390687763,
+      "auc_ci_high": 0.7954638098271349,
+      "recall_sensitivity": 0.7440206851971558,
+      "specificity": 0.6679592825981581,
+      "precision_ppv": 0.6269063180827886,
+      "npv": 0.7767756482525366,
+      "accuracy": 0.7005540166204987,
+      "f1": 0.6804611291752882,
+      "brier": 0.19041952869927098,
+      "scaled_brier": 0.22243563685667178,
+      "tn": 1378,
+      "fp": 685,
+      "fn": 396,
+      "tp": 1151,
+      "o_e_ratio": 0.9035355310723614,
+      "calibration_intercept": -0.2511502399154658,
+      "calibration_slope": 0.9215804435439875,
+      "cv_auc": 0.8031693458756826,
+      "best_params": {
+        "l2_regularization": 0.0,
+        "learning_rate": 0.03,
+        "max_leaf_nodes": 7
+      }
+    }
+  },
+  "risk_bands_test": [
+    {
+      "band": "low",
+      "n": 1157,
+      "observed_prevalence": 0.1694036300777874,
+      "mean_predicted": 0.17105951577688278
+    },
+    {
+      "band": "moderate",
+      "n": 1115,
+      "observed_prevalence": 0.3739910313901345,
+      "mean_predicted": 0.4446376591989931
+    },
+    {
+      "band": "high",
+      "n": 1338,
+      "observed_prevalence": 0.6980568011958147,
+      "mean_predicted": 0.7617440177416894
+    }
+  ],
+  "subgroups": [
+    {
+      "group": "sex",
+      "level": "Female",
+      "n": 1864,
+      "prevalence": 0.35139484978540775,
+      "mean_predicted": 0.3966742825342495,
+      "o_e_ratio": 0.8858523611372959,
+      "auc": 0.7612625411197191
+    },
+    {
+      "group": "sex",
+      "level": "Male",
+      "n": 1746,
+      "prevalence": 0.5108820160366552,
+      "mean_predicted": 0.5575598412687686,
+      "o_e_ratio": 0.916281945403574,
+      "auc": 0.7813107140231671
+    },
+    {
+      "group": "age_group",
+      "level": "30-44",
+      "n": 1315,
+      "prevalence": 0.29885931558935364,
+      "mean_predicted": 0.27332368555265246,
+      "o_e_ratio": 1.0934263343664083,
+      "auc": 0.7486711596098756
+    },
+    {
+      "group": "age_group",
+      "level": "45-64",
+      "n": 1509,
+      "prevalence": 0.46785950960901257,
+      "mean_predicted": 0.5393363249659102,
+      "o_e_ratio": 0.8674726473107194,
+      "auc": 0.7999754814629274
+    },
+    {
+      "group": "age_group",
+      "level": "65+",
+      "n": 786,
+      "prevalence": 0.5699745547073791,
+      "mean_predicted": 0.6865409473585429,
+      "o_e_ratio": 0.8302120316353286,
+      "auc": 0.7317003909551987
+    },
+    {
+      "group": "race_ethnicity",
+      "level": "Mexican American",
+      "n": 491,
+      "prevalence": 0.560081466395112,
+      "mean_predicted": 0.5385515556480466,
+      "o_e_ratio": 1.039977436739846,
+      "auc": 0.7468686868686869
+    },
+    {
+      "group": "race_ethnicity",
+      "level": "Non-Hispanic Black",
+      "n": 704,
+      "prevalence": 0.5440340909090909,
+      "mean_predicted": 0.5134092108200008,
+      "o_e_ratio": 1.0596500402479672,
+      "auc": 0.7869744515751201
+    },
+    {
+      "group": "race_ethnicity",
+      "level": "Non-Hispanic White",
+      "n": 1556,
+      "prevalence": 0.35025706940874035,
+      "mean_predicted": 0.4610773607726894,
+      "o_e_ratio": 0.7596492458917684,
+      "auc": 0.794638789825679
+    },
+    {
+      "group": "race_ethnicity",
+      "level": "Other / multiracial",
+      "n": 538,
+      "prevalence": 0.38104089219330856,
+      "mean_predicted": 0.3948088113277427,
+      "o_e_ratio": 0.9651276295274854,
+      "auc": 0.7648428916721599
+    },
+    {
+      "group": "race_ethnicity",
+      "level": "Other Hispanic",
+      "n": 321,
+      "prevalence": 0.43302180685358255,
+      "mean_predicted": 0.4896820355202786,
+      "o_e_ratio": 0.8842917963970323,
+      "auc": 0.7599414973515694
+    },
+    {
+      "group": "education",
+      "level": "high_school",
+      "n": 782,
+      "prevalence": 0.5230179028132992,
+      "mean_predicted": 0.5598508355665872,
+      "o_e_ratio": 0.9342093814756712,
+      "auc": 0.769784408450612
+    },
+    {
+      "group": "education",
+      "level": "less_than_high_school",
+      "n": 711,
+      "prevalence": 0.6385372714486639,
+      "mean_predicted": 0.6515118147406229,
+      "o_e_ratio": 0.9800854827212544,
+      "auc": 0.712987881177257
+    },
+    {
+      "group": "education",
+      "level": "more_than_high_school",
+      "n": 2115,
+      "prevalence": 0.3224586288416076,
+      "mean_predicted": 0.38328585539870186,
+      "o_e_ratio": 0.8413006227589053,
+      "auc": 0.7589613693152399
+    },
+    {
+      "group": "diabetes",
+      "level": "borderline",
+      "n": 119,
+      "prevalence": 0.5126050420168067,
+      "mean_predicted": 0.5686755329679661,
+      "o_e_ratio": 0.9014016118145214,
+      "auc": 0.7371396269078575
+    },
+    {
+      "group": "diabetes",
+      "level": "no",
+      "n": 3021,
+      "prevalence": 0.3995365772922873,
+      "mean_predicted": 0.4467888296848672,
+      "o_e_ratio": 0.8942403004437057,
+      "auc": 0.7811336205833482
+    },
+    {
+      "group": "diabetes",
+      "level": "yes",
+      "n": 469,
+      "prevalence": 0.5948827292110874,
+      "mean_predicted": 0.6298456681206337,
+      "o_e_ratio": 0.9444896731387064,
+      "auc": 0.7214110545180155
+    }
+  ],
+  "transportability_prior_shift": {
+    "source_prevalence": 0.48652482269503544,
+    "target_prevalence": 0.42853185595567866,
+    "before": {
+      "o_e_ratio": 0.9031465280890171,
+      "calibration_intercept": -0.25405175024110754,
+      "calibration_slope": 0.9087457131326011,
+      "auc": 0.781078164514622
+    },
+    "after": {
+      "o_e_ratio": 0.9916320584307482,
+      "calibration_intercept": -0.020121852402753083,
+      "calibration_slope": 0.9087457131326011,
+      "auc": 0.781078164514622
+    },
+    "population": {
+      "target_prevalence": 0.34345951777490613,
+      "weighted_before": {
+        "o_e_ratio": 0.7985691748878676,
+        "calibration_intercept": -0.48727305146574734,
+        "calibration_slope": 0.9717274645538775
+      },
+      "weighted_after": {
+        "o_e_ratio": 1.0554814707224087,
+        "calibration_intercept": 0.10672828689173962,
+        "calibration_slope": 0.9717274645538775
+      }
+    }
+  },
+  "net_benefit": [
+    {
+      "threshold": 0.2,
+      "model": 0.3046398891966759,
+      "refer_everyone": 0.28566481994459836
+    },
+    {
+      "threshold": 0.3,
+      "model": 0.2434111594776415,
+      "refer_everyone": 0.18361693707954094
+    },
+    {
+      "threshold": 0.4,
+      "model": 0.18938134810710985,
+      "refer_everyone": 0.047553093259464385
+    },
+    {
+      "threshold": 0.5,
+      "model": 0.14127423822714683,
+      "refer_everyone": -0.14293628808864267
+    }
+  ],
+  "band_cutoffs": {
+    "30": {
+      "recall_sensitivity": 0.8733031674208145,
+      "specificity": 0.4658264663111973,
+      "precision_ppv": 0.5507541785568691,
+      "npv": 0.8305963699222126,
+      "accuracy": 0.6404432132963989
+    },
+    "60": {
+      "recall_sensitivity": 0.6037491919844861,
+      "specificity": 0.8041686863790596,
+      "precision_ppv": 0.6980568011958147,
+      "npv": 0.730193661971831,
+      "accuracy": 0.7182825484764543
+    }
+  },
+  "characteristics": [
+    {
+      "characteristic": "Participants, n",
+      "development": "7,050",
+      "evaluation": "3,610"
+    },
+    {
+      "characteristic": "Moderate or severe periodontitis, n (%)",
+      "development": "3,430 (48.7%)",
+      "evaluation": "1,547 (42.9%)"
+    },
+    {
+      "characteristic": "Age, years, mean (SD)",
+      "development": "52.0 (14.3)",
+      "evaluation": "52.0 (14.3)"
+    },
+    {
+      "characteristic": "Male, %",
+      "development": "49.7",
+      "evaluation": "48.4"
+    },
+    {
+      "characteristic": "Body-mass index, mean (SD)",
+      "development": "29.3 (6.5)",
+      "evaluation": "29.4 (7.0)"
+    },
+    {
+      "characteristic": "Education: less than high school / high school / more, %",
+      "development": "25.2 / 21.4 / 53.4",
+      "evaluation": "19.7 / 21.7 / 58.6"
+    },
+    {
+      "characteristic": "Smoking: never / former / current, %",
+      "development": "56.1 / 25.0 / 18.9",
+      "evaluation": "56.6 / 25.0 / 18.4"
+    },
+    {
+      "characteristic": "Diabetes: no / borderline / yes, %",
+      "development": "85.5 / 2.3 / 12.2",
+      "evaluation": "83.7 / 3.3 / 13.0"
+    },
+    {
+      "characteristic": "Teeth and gums rated fair or poor, %",
+      "development": "33.8",
+      "evaluation": "33.5"
+    },
+    {
+      "characteristic": "Ever treated for gum disease, %",
+      "development": "24.1",
+      "evaluation": "23.9"
+    },
+    {
+      "characteristic": "Ever had a tooth loosen on its own, %",
+      "development": "15.5",
+      "evaluation": "15.4"
+    },
+    {
+      "characteristic": "Told of bone loss around teeth, %",
+      "development": "12.3",
+      "evaluation": "13.0"
+    },
+    {
+      "characteristic": "Noticed a tooth that doesn't look right, %",
+      "development": "17.4",
+      "evaluation": "17.3"
+    },
+    {
+      "characteristic": "Days cleaning between teeth (0-7), mean (SD)",
+      "development": "3.2 (3.0)",
+      "evaluation": "3.4 (2.9)"
+    },
+    {
+      "characteristic": "Days using mouthwash for dental problems (0-7), mean (SD)",
+      "development": "3.1 (3.1)",
+      "evaluation": "3.1 (3.1)"
+    }
+  ],
+  "missing_data_pct": [
+    {
+      "feature": "age",
+      "development_pct": 0.0,
+      "evaluation_pct": 0.0
+    },
+    {
+      "feature": "bmi",
+      "development_pct": 0.6382978723404255,
+      "evaluation_pct": 0.5263157894736842
+    },
+    {
+      "feature": "gum_health_rating",
+      "development_pct": 1.2340425531914894,
+      "evaluation_pct": 0.0554016620498615
+    },
+    {
+      "feature": "floss_days",
+      "development_pct": 1.1914893617021276,
+      "evaluation_pct": 0.02770083102493075
+    },
+    {
+      "feature": "mouthwash_days",
+      "development_pct": 1.1914893617021276,
+      "evaluation_pct": 0.0
+    },
+    {
+      "feature": "male",
+      "development_pct": 0.0,
+      "evaluation_pct": 0.0
+    },
+    {
+      "feature": "ever_treated_gum_disease",
+      "development_pct": 1.5460992907801419,
+      "evaluation_pct": 0.2770083102493075
+    },
+    {
+      "feature": "ever_loose_teeth",
+      "development_pct": 1.1914893617021276,
+      "evaluation_pct": 0.0554016620498615
+    },
+    {
+      "feature": "told_bone_loss",
+      "development_pct": 1.7588652482269502,
+      "evaluation_pct": 0.5263157894736842
+    },
+    {
+      "feature": "teeth_dont_look_right",
+      "development_pct": 1.2340425531914894,
+      "evaluation_pct": 0.110803324099723
+    },
+    {
+      "feature": "education",
+      "development_pct": 0.15602836879432624,
+      "evaluation_pct": 0.0554016620498615
+    },
+    {
+      "feature": "smoking",
+      "development_pct": 0.0425531914893617,
+      "evaluation_pct": 0.0554016620498615
+    },
+    {
+      "feature": "diabetes",
+      "development_pct": 0.07092198581560284,
+      "evaluation_pct": 0.02770083102493075
+    },
+    {
+      "feature": "any of the above",
+      "development_pct": 3.1914893617021276,
+      "evaluation_pct": 1.4958448753462603
+    }
+  ],
+  "sensitivity_added_predictor": {
+    "pre-specified": 0.8031693458756826,
+    "plus think_gum_disease": 0.8066878211426639
+  },
+  "permutation_importance": [
+    {
+      "feature": "age",
+      "auc_drop": 0.08644641122044103,
+      "sd": 0.0045889635346929025
+    },
+    {
+      "feature": "gum_health_rating",
+      "auc_drop": 0.0376438878620168,
+      "sd": 0.0038319146769550793
+    },
+    {
+      "feature": "education",
+      "auc_drop": 0.02727116201639309,
+      "sd": 0.0016544946455927078
+    },
+    {
+      "feature": "male",
+      "auc_drop": 0.024627654857759473,
+      "sd": 0.002472016026333243
+    },
+    {
+      "feature": "smoking",
+      "auc_drop": 0.020364372304721868,
+      "sd": 0.0016144926457252811
+    },
+    {
+      "feature": "ever_loose_teeth",
+      "auc_drop": 0.010338901211702079,
+      "sd": 0.001466943593691408
+    },
+    {
+      "feature": "floss_days",
+      "auc_drop": 0.006518863930970764,
+      "sd": 0.0007843628363440278
+    },
+    {
+      "feature": "bmi",
+      "auc_drop": 0.002590177351376055,
+      "sd": 0.0006072452486521894
+    },
+    {
+      "feature": "teeth_dont_look_right",
+      "auc_drop": 0.0019839346305657313,
+      "sd": 0.0004099162447108875
+    },
+    {
+      "feature": "mouthwash_days",
+      "auc_drop": 0.0017786994733759887,
+      "sd": 0.0007199408823359371
+    },
+    {
+      "feature": "ever_treated_gum_disease",
+      "auc_drop": 0.0015769423470943123,
+      "sd": 0.0008158793262771121
+    },
+    {
+      "feature": "told_bone_loss",
+      "auc_drop": 0.001216245475034783,
+      "sd": 0.0007746068187003117
+    },
+    {
+      "feature": "diabetes",
+      "auc_drop": 0.0010627421109015711,
+      "sd": 0.000565973840333574
+    }
+  ]
+}

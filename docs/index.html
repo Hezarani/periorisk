@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PerioRisk — gum disease risk check</title>
+<meta name="description" content="Fourteen questions estimate your chance of moderate or severe gum disease (periodontitis). Built and tested on the US national health survey (NHANES 2009–2014). Runs in your browser; your answers never leave your device.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://hezarani.github.io/periorisk/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PerioRisk">
+<meta property="og:title" content="PerioRisk — how likely is gum disease?">
+<meta property="og:description" content="An open self-check for periodontitis, tested on US national survey data. Fourteen questions, about two minutes, and your answers never leave your device.">
+<meta property="og:url" content="https://hezarani.github.io/periorisk/">
+<meta property="og:image" content="https://hezarani.github.io/periorisk/social-preview.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="PerioRisk — a gum disease risk check from 14 questions, validated on 3,610 people in the US national health survey.">
+<meta name="twitter:card" content="summary_large_image">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%239b2d4b'/%3E%3Cpath d='M20 14c-5 0-8 5-7 11 1 5 3 8 4 14 1 5 2 11 5 11 3 0 3-6 5-10 1-2 3-2 4 0 2 4 2 10 5 10 3 0 4-6 5-11 1-6 3-9 4-14 1-6-2-11-7-11-4 0-6 2-9 2s-5-2-9-2z' fill='white'/%3E%3Cpath d='M9 33c15-7 31-7 46 0' fill='none' stroke='%23f2a7bb' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+:root {
+  --bg: #f5f5f7; --surface: #ffffff; --surface-2: #f9f9fb; --text: #1d1d1f; --text-2: #55555b; --text-3: #6e6e73;
+  --hairline: rgba(0,0,0,.08); --hairline-2: rgba(0,0,0,.16); --fill: rgba(0,0,0,.05); --fill-2: rgba(0,0,0,.09);
+  --accent: #9b2d4b; --accent-press: #84233f; --accent-soft: rgba(155,45,75,.09); --accent-text: #8a2643; --on-accent: #fff;
+  --low: #2f7a4f; --mod: #a86a0b; --high: #b4234a; --low-soft: rgba(47,122,79,.12); --mod-soft: rgba(168,106,11,.12); --high-soft: rgba(180,35,74,.11);
+  --warn-soft: rgba(168,106,11,.10);
+  --shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+  --bar: rgba(245,245,247,.74); --radius: 20px; --radius-s: 12px;
+  --spring: cubic-bezier(.22,1,.36,1);
+  font: 100%/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, Roboto, "Helvetica Neue", sans-serif;
+  color: var(--text); background: var(--bg);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  scroll-padding-top: 72px; scroll-padding-bottom: 96px;
+}
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000; --surface: #1c1c1e; --surface-2: #232326; --text: #f5f5f7; --text-2: #a8a8ad; --text-3: #98989d;
+    --hairline: rgba(255,255,255,.10); --hairline-2: rgba(255,255,255,.2); --fill: rgba(255,255,255,.08); --fill-2: rgba(255,255,255,.14);
+    --accent: #ea7a9a; --accent-press: #f08fab; --accent-soft: rgba(234,122,154,.14); --accent-text: #f29ab3; --on-accent: #2a0711;
+    --low: #5cc489; --mod: #f0b14a; --high: #f2708f; --low-soft: rgba(92,196,137,.15); --mod-soft: rgba(240,177,74,.15); --high-soft: rgba(242,112,143,.15);
+    --warn-soft: rgba(240,177,74,.12);
+    --shadow: 0 1px 2px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.35); --bar: rgba(10,10,12,.66);
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { min-height: 100vh; background: var(--bg); }
+a { color: var(--accent-text); text-decoration: none; }
+a:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent); outline-offset: 2px; border-radius: 8px; }
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 50; background: var(--surface); padding: 8px 14px; border-radius: 10px; box-shadow: var(--shadow); }
+.skip:focus { top: 10px; }
+
+/* ---------- bar ---------- */
+.bar { position: sticky; top: 0; z-index: 30; background: var(--bar); border-bottom: 1px solid var(--hairline);
+  backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); }
+.bar-in { max-width: 980px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; gap: 14px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 650; letter-spacing: -.01em; }
+.brand:hover { text-decoration: none; }
+.brand svg { width: 28px; height: 28px; flex: none; }
+.brand small { font-weight: 400; color: var(--text-2); font-size: .82rem; letter-spacing: 0; }
+.bar nav { margin-left: auto; display: flex; gap: 2px; }
+.bar nav a { color: var(--text-2); font-size: .88rem; padding: 6px 10px; border-radius: 8px; white-space: nowrap; position: relative; }
+.bar nav a::after { content: ""; position: absolute; inset: -6px 0; }
+.bar nav a:hover { color: var(--text); background: var(--fill); text-decoration: none; }
+@media (max-width: 640px) { .brand small, .bar nav a.wide { display: none; } .bar-in { padding: 10px 14px; } }
+@media (max-width: 400px) { .bar nav a.ext { display: none; } }
+
+main { max-width: 980px; margin: 0 auto; padding: 0 20px 140px; }
+@media (max-width: 640px) { main { padding: 0 14px 140px; } }
+
+/* ---------- hero ---------- */
+.hero { text-align: center; padding: clamp(36px, 7vw, 76px) 0 26px; }
+.hero h1 { font-size: clamp(2.1rem, 5.4vw, 3.4rem); line-height: 1.06; letter-spacing: -.03em; margin: 0 0 14px; font-weight: 700; }
+.hero .lede { font-size: clamp(1.02rem, 1.7vw, 1.2rem); color: var(--text-2); max-width: 640px; margin: 0 auto; letter-spacing: -.006em; }
+.trust { margin: 24px auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; color: var(--text-2); font-size: .88rem; }
+.trust span { display: inline-flex; align-items: center; gap: 8px; }
+.trust svg { width: 16px; height: 16px; color: var(--low); flex: none; }
+
+/* ---------- cards & questions ---------- */
+.card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(18px, 3.4vw, 30px); margin: 0 auto 18px; max-width: 760px; }
+.card > h2 { font-size: 1.28rem; letter-spacing: -.015em; margin: 0 0 4px; display: flex; align-items: center; gap: 12px; }
+.card > h2 .step { width: 28px; height: 28px; border-radius: 50%; display: inline-grid; place-items: center; font-size: .86rem; font-weight: 650;
+  background: var(--accent-soft); color: var(--accent-text); flex: none; transition: background-color 240ms ease, color 240ms ease; }
+.card.done > h2 .step { background: var(--accent); color: var(--on-accent); }
+.card > .sub { margin: 0 0 6px 40px; color: var(--text-2); font-size: .92rem; }
+@media (max-width: 640px) { .card > .sub { margin-left: 0; } }
+fieldset.q { border: 0; margin: 0; padding: 20px 0 2px; min-width: 0; border-top: 1px solid var(--hairline); margin-top: 18px; }
+.card > h2 + .sub + fieldset.q, .card > h2 + fieldset.q { border-top: 0; margin-top: 6px; }
+fieldset.q > legend { padding: 0; font-weight: 600; font-size: 1rem; letter-spacing: -.008em; line-height: 1.4; float: left; width: 100%; margin-bottom: 10px; }
+fieldset.q > legend + * { clear: both; }
+.q .tag { font-weight: 500; font-size: .76rem; color: var(--text-3); background: var(--fill); padding: 2px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 2px; }
+.q .help { clear: both; margin: -4px 0 12px; color: var(--text-2); font-size: .88rem; }
+.q[aria-disabled="true"], .card[aria-disabled="true"] { opacity: .45; }
+
+/* segmented choices built on native radios */
+.seg { display: flex; flex-wrap: wrap; gap: 8px; }
+.seg label { position: relative; flex: 1 1 0; min-width: max-content; }
+.seg.days { gap: 6px; flex-wrap: nowrap; }
+.seg.days label { min-width: 0; }
+.seg.scale5 { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.seg.scale5 label { min-width: 0; }
+@media (max-width: 560px) { .seg.scale5 { gap: 6px; } .seg.scale5 span { padding: 8px 2px; font-size: .84rem; line-height: 1.2; } .seg.days { gap: 4px; } }
+@media (max-width: 360px) { .seg.days { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; } }
+.seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.seg span { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 46px; padding: 8px 14px; border-radius: 12px;
+  background: var(--fill); color: var(--text); font-size: .95rem; font-weight: 500; cursor: pointer; user-select: none; -webkit-user-select: none;
+  transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 110ms ease-out; }
+.seg label:hover span { background: var(--fill-2); }
+.seg input:active + span { transform: scale(.97); transition-duration: 60ms; }
+.seg input:checked + span { background: var(--accent-soft); color: var(--accent-text); box-shadow: inset 0 0 0 2px var(--accent); font-weight: 600; }
+.seg input:focus-visible + span { outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent); outline-offset: 2px; }
+.seg.days span { padding: 8px 4px; font-variant-numeric: tabular-nums; }
+.scale-ends { display: flex; justify-content: space-between; color: var(--text-3); font-size: .78rem; margin-top: 6px; }
+
+/* list choices for long answers */
+.list { display: grid; gap: 8px; }
+.list label { position: relative; display: block; }
+.list input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.list span { display: flex; gap: 12px; align-items: center; min-height: 50px; padding: 11px 14px; border-radius: 12px; background: var(--fill);
+  cursor: pointer; font-size: .95rem; line-height: 1.35; transition: background-color 160ms ease, box-shadow 160ms ease, transform 110ms ease-out; }
+.list span::before { content: ""; width: 18px; height: 18px; border-radius: 50%; flex: none; box-shadow: inset 0 0 0 2px var(--hairline-2); background: var(--surface);
+  transition: box-shadow 160ms ease; }
+.list label:hover span { background: var(--fill-2); }
+.list input:active + span { transform: scale(.985); transition-duration: 60ms; }
+.list input:checked + span { background: var(--accent-soft); box-shadow: inset 0 0 0 2px var(--accent); }
+.list input:checked + span::before { box-shadow: inset 0 0 0 5px var(--accent); }
+.list input:focus-visible + span { outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent); outline-offset: 2px; }
+
+/* number fields */
+.fields { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: flex-end; }
+.field { display: grid; gap: 6px; font-size: .86rem; color: var(--text-2); }
+.field input { font: inherit; font-size: 1.05rem; color: var(--text); width: 9.5rem; min-height: 46px; padding: 8px 12px; border-radius: 12px;
+  border: 1px solid var(--hairline-2); background: var(--surface); font-variant-numeric: tabular-nums; transition: border-color 160ms ease, box-shadow 160ms ease; }
+.field input.short { width: 6.2rem; }
+.field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.field input[aria-invalid="true"] { border-color: var(--high); box-shadow: 0 0 0 4px var(--high-soft); }
+.units { display: inline-flex; background: var(--fill); border-radius: 999px; padding: 3px; margin-bottom: 12px; }
+.units button { appearance: none; border: 0; font: inherit; font-size: .84rem; font-weight: 500; padding: 5px 14px; border-radius: 999px; position: relative;
+  background: transparent; color: var(--text-2); cursor: pointer; transition: background-color 180ms ease, color 180ms ease; }
+.units button::after { content: ""; position: absolute; inset: -8px 0; }
+.units button[aria-pressed="true"] { background: var(--surface); color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,.14); }
+label.check { display: inline-flex; gap: 10px; align-items: center; font-size: .92rem; margin-top: 12px; min-height: 44px; cursor: pointer; color: var(--text-2); }
+label.check input { width: 20px; height: 20px; margin: 0; accent-color: var(--accent); flex: none; }
+.msg { font-size: .86rem; margin: 8px 0 0; color: var(--text-2); min-height: 0; }
+.msg.error { color: var(--high); }
+.notice { margin-top: 16px; border-radius: 14px; padding: 14px 16px; background: var(--warn-soft); font-size: .93rem; line-height: 1.5; }
+.notice b { display: block; margin-bottom: 2px; }
+
+/* ---------- dock ---------- */
+.dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  background: var(--bar); border-top: 1px solid var(--hairline); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+  transition: transform 320ms var(--spring), opacity 220ms ease; }
+.dock.away { transform: translateY(110%); opacity: 0; pointer-events: none; }
+.dock-in { max-width: 760px; margin: 0 auto; display: flex; align-items: center; gap: 16px; }
+.progress { flex: 1; min-width: 0; }
+.progress .label { font-size: .86rem; color: var(--text-2); margin-bottom: 6px; font-variant-numeric: tabular-nums; }
+.progress .track { height: 6px; border-radius: 3px; background: var(--fill-2); overflow: hidden; }
+.progress .fill { height: 100%; width: 0; border-radius: 3px; background: var(--accent); transition: width 420ms var(--spring); }
+.btn { appearance: none; border: 0; font: inherit; font-size: .98rem; font-weight: 600; cursor: pointer; position: relative; display: inline-flex; align-items: center;
+  justify-content: center; gap: 8px; min-height: 46px; padding: 0 22px; border-radius: 999px; color: var(--text); background: var(--fill-2);
+  transition: transform 110ms ease-out, background-color 160ms ease, opacity 160ms ease; white-space: nowrap; }
+.btn:hover { background: color-mix(in srgb, var(--text) 14%, transparent); }
+.btn:active { transform: scale(.97); transition-duration: 60ms; }
+.btn.primary { background: var(--accent); color: var(--on-accent); }
+.btn.primary:hover { background: var(--accent-press); }
+.btn[aria-disabled="true"] { cursor: not-allowed; transform: none; }
+.btn.primary[aria-disabled="true"], .btn.primary[aria-disabled="true"]:hover { background: var(--fill-2); color: var(--text-2); }
+.btn.quiet { background: transparent; color: var(--accent-text); padding: 0 12px; }
+.btn.quiet:hover { background: var(--accent-soft); }
+.btn svg { width: 18px; height: 18px; }
+
+/* ---------- result ---------- */
+#result { scroll-margin-top: 72px; }
+#result.show { animation: rise 460ms var(--spring) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.eyebrow { text-transform: uppercase; letter-spacing: .06em; font-size: .76rem; font-weight: 650; color: var(--text-3); margin: 0 0 6px; }
+.big { display: flex; align-items: baseline; gap: 2px; font-weight: 700; letter-spacing: -.04em; line-height: 1; color: var(--band, var(--text)); }
+.big .pct { font-size: clamp(4rem, 13vw, 5.6rem); font-variant-numeric: tabular-nums; }
+.big .unit { font-size: clamp(2rem, 6vw, 2.6rem); }
+.band-line { font-size: 1.12rem; margin: 10px 0 0; letter-spacing: -.01em; display: flex; gap: 10px; align-items: baseline; }
+.band-line .dot { width: 11px; height: 11px; border-radius: 50%; background: var(--band); flex: none; transform: translateY(-1px); }
+.meter { position: relative; height: 12px; border-radius: 6px; margin: 22px 0 8px; display: flex; gap: 3px; }
+.meter i { display: block; height: 100%; }
+.meter i:nth-child(1) { width: 30%; background: var(--low); border-radius: 6px 0 0 6px; opacity: .85; }
+.meter i:nth-child(2) { width: 30%; background: var(--mod); opacity: .85; }
+.meter i:nth-child(3) { flex: 1; background: var(--high); border-radius: 0 6px 6px 0; opacity: .85; }
+.pin { position: absolute; top: -7px; width: 26px; height: 26px; margin-left: -13px; border-radius: 50%; background: var(--surface);
+  box-shadow: 0 0 0 3px var(--band), 0 2px 8px rgba(0,0,0,.25); left: 0; transition: left 760ms var(--spring); }
+.ticks { position: relative; height: 1.2rem; font-size: .78rem; color: var(--text-3); font-variant-numeric: tabular-nums; }
+.ticks span { position: absolute; top: 0; transform: translateX(-50%); }
+.ticks span:first-child { transform: none; } .ticks span:last-child { transform: translateX(-100%); }
+.result h3 { font-size: 1.02rem; margin: 28px 0 6px; letter-spacing: -.01em; }
+.result p { margin: 0 0 8px; }
+.result .lead { font-size: 1.04rem; }
+.contrib { list-style: none; margin: 12px 0 6px; padding: 0; display: grid; gap: 10px; }
+.contrib li { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) 4.6rem; align-items: center; gap: 12px; font-size: .92rem; }
+.contrib .what b { display: block; font-weight: 600; }
+.contrib .what small { color: var(--text-2); font-size: .82rem; }
+.contrib .bar2 { position: relative; height: 10px; }
+.contrib .bar2::before { content: ""; position: absolute; left: 50%; top: -4px; bottom: -4px; width: 1px; background: var(--hairline-2); }
+.contrib .bar2 i { position: absolute; top: 0; height: 100%; border-radius: 5px; transition: width 600ms var(--spring), left 600ms var(--spring); }
+.contrib .up i { background: var(--high); }
+.contrib .down i { background: var(--low); }
+.contrib .val { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+.contrib .up .val { color: var(--high); } .contrib .down .val { color: var(--low); }
+@media (max-width: 560px) { .contrib li { grid-template-columns: minmax(0, 1fr) 4.2rem; } .contrib .bar2 { grid-column: 1 / -1; grid-row: 2; } }
+.fine { font-size: .84rem; color: var(--text-2); }
+ul.tips { margin: 6px 0 0; padding-left: 1.2em; } ul.tips li { margin: 4px 0; }
+.callout { margin-top: 24px; border-radius: 14px; padding: 14px 16px; background: var(--accent-soft); font-size: .93rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.actions .btn { white-space: normal; text-align: center; line-height: 1.25; padding-top: 8px; padding-bottom: 8px; }
+#result.stale > :not(.stale-note) { opacity: .4; transition: opacity 200ms ease; }
+.stale-note { margin: 0 0 14px; padding: 10px 14px; border-radius: 12px; background: var(--warn-soft); font-size: .92rem; }
+.card > h2.eyebrow { display: block; font-size: .76rem; letter-spacing: .06em; margin: 0 0 6px; color: var(--text-3); }
+.updated { font-size: .8rem; color: var(--text-3); margin-left: 8px; opacity: 0; transition: opacity 300ms ease; }
+.updated.on { opacity: 1; }
+
+/* ---------- accuracy & about ---------- */
+section.info { max-width: 760px; margin: 56px auto 0; scroll-margin-top: 72px; }
+section.info > h2 { font-size: clamp(1.6rem, 3.6vw, 2.1rem); letter-spacing: -.025em; margin: 0 0 8px; line-height: 1.15; }
+section.info > p { color: var(--text-2); }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 20px 0; }
+@media (max-width: 720px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.stat { background: var(--surface); border-radius: 16px; box-shadow: var(--shadow); padding: 16px; }
+.stat b { display: block; font-size: 1.75rem; letter-spacing: -.03em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat span { display: block; font-size: .84rem; color: var(--text-2); margin-top: 6px; line-height: 1.35; }
+.figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 16px 0; }
+figure { margin: 0; background: #fff; border-radius: 16px; padding: 10px; box-shadow: var(--shadow); }
+figure img { width: 100%; height: auto; display: block; }
+figcaption { color: #444; font-size: .8rem; padding: 6px 4px 2px; }
+.prose { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(18px, 3.4vw, 28px); }
+.prose h3 { margin: 0 0 6px; font-size: 1.04rem; } .prose h3:not(:first-child) { margin-top: 22px; }
+.prose ul { padding-left: 1.2em; margin: 6px 0; } .prose li { margin: 5px 0; }
+pre { background: var(--fill); border-radius: 12px; padding: 12px 14px; overflow-x: auto; font-size: .86rem; line-height: 1.5; }
+code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: .92em; }
+footer { max-width: 760px; margin: 56px auto 0; padding: 24px 20px 140px; color: var(--text-3); font-size: .82rem; border-top: 1px solid var(--hairline); }
+footer p { margin: 6px 0; }
+
+.print-only { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+  #result.show { animation: fade 200ms ease both !important; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  .seg input:active + span, .list input:active + span, .btn:active { transform: none; }
+}
+@media (prefers-reduced-transparency: reduce) { .bar, .dock { background: var(--bg); backdrop-filter: none; -webkit-backdrop-filter: none; } }
+@media (prefers-contrast: more) {
+  :root { --hairline: rgba(0,0,0,.4); --hairline-2: rgba(0,0,0,.6); --text-2: #2c2c2e; --text-3: #3a3a3c; }
+  .seg span, .list span, .stat, .card { border: 1px solid var(--hairline-2); }
+}
+@media screen and (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  :root { --hairline: rgba(255,255,255,.4); --hairline-2: rgba(255,255,255,.6); --text-2: #d1d1d6; --text-3: #c7c7cc; }
+}
+@media print {
+  :root { --bg: #fff; --surface: #fff; --shadow: none; }
+  .bar, .hero, #check, .dock, section.info, .actions, .skip, footer .no-print { display: none !important; }
+  main { padding: 0; } .card { box-shadow: none; padding: 0; max-width: none; }
+  #result { animation: none !important; } .pin { transition: none; }
+  .print-only { display: block; }
+  .print-head { font-size: .9rem; padding-bottom: 10px; margin-bottom: 14px; border-bottom: 2px solid #9b2d4b; }
+  .updated { display: none; }
+  .print-only table { border-collapse: collapse; width: 100%; font-size: .85rem; margin-top: 8px; }
+  .print-only td { border-bottom: 1px solid #ddd; padding: 5px 6px; vertical-align: top; }
+  footer { padding-bottom: 0; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .callout, .contrib li, .print-only tr, .meter, .ticks { break-inside: avoid; }
+  #result.stale > * { opacity: 1; } .stale-note { display: none; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#check">Skip to the questions</a>
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="#top" aria-label="PerioRisk, back to top">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#9b2d4b"/><path d="M20 14c-5 0-8 5-7 11 1 5 3 8 4 14 1 5 2 11 5 11 3 0 3-6 5-10 1-2 3-2 4 0 2 4 2 10 5 10 3 0 4-6 5-11 1-6 3-9 4-14 1-6-2-11-7-11-4 0-6 2-9 2s-5-2-9-2z" fill="#fff"/><path d="M9 33c15-7 31-7 46 0" fill="none" stroke="#f2a7bb" stroke-width="5" stroke-linecap="round"/></svg>
+      <span>PerioRisk <small>gum disease risk check</small></span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#check">Check</a>
+      <a href="#accuracy">Accuracy</a>
+      <a href="#about" class="wide">About</a>
+      <a href="https://github.com/Hezarani/periorisk" rel="noopener" class="ext">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <h1>How likely is gum disease?</h1>
+    <p class="lede">Answer 14 short questions to estimate your chance of moderate or severe gum disease (periodontitis).
+      The questions come from a US national health survey in which 10,660 adults also had a full gum examination by a dentist.</p>
+    <div class="trust">
+      <span><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5 3 4.3v5.1c0 4.3 3 7.7 7 9.1 4-1.4 7-4.8 7-9.1V4.3L10 1.5Zm-1.2 11.6L5.6 9.9l1.2-1.2 2 2 4.4-4.4 1.2 1.2-5.6 5.6Z"/></svg>Your answers never leave this device</span>
+      <span><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-1.2 11.4L5.6 10.2l1.2-1.2 2 2 4.4-4.4 1.2 1.2-5.6 5.6Z"/></svg>Tested on 3,610 different people</span>
+      <span><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-1.2 11.4L5.6 10.2l1.2-1.2 2 2 4.4-4.4 1.2 1.2-5.6 5.6Z"/></svg>Open source &amp; free</span>
+    </div>
+  </section>
+
+  <noscript><div class="card"><p><b>PerioRisk needs JavaScript</b> to calculate your estimate on this device. Nothing is sent anywhere.</p></div></noscript>
+
+  <form id="check" novalidate autocomplete="off" aria-label="PerioRisk questions">
+    <section class="card" id="sec-start" aria-labelledby="h-start">
+      <h2 id="h-start"><span class="step" aria-hidden="true">1</span>Before you start</h2>
+      <div data-slot="age"></div>
+      <div data-slot="natural_teeth"></div>
+      <div class="notice" id="scope" role="status" hidden></div>
+    </section>
+    <section class="card" id="sec-you" aria-labelledby="h-you">
+      <h2 id="h-you"><span class="step" aria-hidden="true">2</span>About you</h2>
+      <div data-slot="sex"></div>
+      <div data-slot="body"></div>
+      <div data-slot="education"></div>
+      <div data-slot="smoking"></div>
+      <div data-slot="diabetes"></div>
+    </section>
+    <section class="card" id="sec-mouth" aria-labelledby="h-mouth">
+      <h2 id="h-mouth"><span class="step" aria-hidden="true">3</span>Your mouth</h2>
+      <p class="sub">For the yes/no questions, choose “Not sure” if you don’t know — the estimate then uses a typical answer instead.</p>
+      <div data-slot="gum_health"></div>
+      <div data-slot="gum_treatment"></div>
+      <div data-slot="loose_teeth"></div>
+      <div data-slot="bone_loss"></div>
+      <div data-slot="tooth_doesnt_look_right"></div>
+      <div data-slot="floss_days"></div>
+      <div data-slot="mouthwash_days"></div>
+    </section>
+  </form>
+
+  <section class="card result" id="result" aria-labelledby="h-result" tabindex="-1" hidden>
+    <div class="print-only print-head"><b>PerioRisk</b> · gum disease (periodontitis) screening summary · <span id="print-date"></span></div>
+    <p class="stale-note" id="stale" hidden>Your answers have changed. Answer every question to update this estimate.</p>
+    <h2 class="eyebrow" id="h-result">Your estimate <span class="updated" id="updated" aria-hidden="true">Updated</span></h2>
+    <div class="big"><span class="pct" id="pct">–</span><span class="unit">%</span></div>
+    <p class="band-line"><span class="dot" aria-hidden="true"></span><span><strong id="band-name">–</strong> of moderate or severe gum disease</span></p>
+    <div class="meter" aria-hidden="true"><i></i><i></i><i></i><span class="pin" id="pin"></span></div>
+    <div class="ticks" aria-hidden="true"><span style="left:0">0%</span><span style="left:30%">30%</span><span style="left:60%">60%</span><span style="left:100%">100%</span></div>
+
+    <h3>What this means</h3>
+    <p class="lead" id="meaning"></p>
+    <h3>What to do next</h3>
+    <p id="next"></p>
+
+    <h3>What shaped your estimate</h3>
+    <ul class="contrib" id="contrib"></ul>
+    <p class="fine">Each bar shows how many percentage points (pts) your estimate changes when that one answer is swapped for a typical answer
+      in the survey (the most common answer, or the middle value for numbers such as age). It explains how the model works — it is not a measure of cause and effect.</p>
+
+    <div id="tips-wrap"><h3>Things that may help</h3><ul class="tips" id="tips"></ul></div>
+
+    <div class="callout"><b>This is a screening estimate, not a diagnosis.</b> Only a dental examination with a periodontal probe can confirm gum disease.
+      If your gums bleed, are swollen or sore, or a tooth feels loose, see a dentist whatever this result says.</div>
+
+    <div class="print-only">
+      <h3>Answers used</h3>
+      <table id="print-answers"></table>
+      <p class="fine" id="print-meta"></p>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn primary" id="print"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5 2h10v4H5V2Zm-2 5h14a2 2 0 0 1 2 2v5h-3v4H4v-4H1V9a2 2 0 0 1 2-2Zm3 7v2h8v-4H6v2Z"/></svg>Print a summary for your dentist</button>
+      <button type="button" class="btn" id="edit">Change my answers</button>
+      <button type="button" class="btn quiet" id="reset">Start over</button>
+    </div>
+  </section>
+
+  <section class="info" id="accuracy" aria-labelledby="h-acc">
+    <h2 id="h-acc">How accurate is it?</h2>
+    <p>The model learned from 7,050 adults in NHANES 2009–2012 and was then tested, once, on 3,610 different adults from NHANES 2013–2014 —
+      a later survey it had never seen. Every one of them had a full-mouth gum examination, scored with the CDC/AAP definition used for national surveillance.
+      No estimate is a diagnosis: about 17 in 100 people in the lower-risk band did have moderate or severe gum disease.</p>
+    <div class="stats">
+      <div class="stat"><b data-metric="auc">0.78</b><span>AUC <span data-metric="auc_ci"></span> — 0.5 is a coin toss, 1.0 is perfect</span></div>
+      <div class="stat"><b data-metric="sens30">87%</b><span>of people with moderate or severe gum disease got an estimate of 30% or more</span></div>
+      <div class="stat"><b data-metric="spec60">80%</b><span>of people without it got an estimate below 60%</span></div>
+      <div class="stat"><b data-metric="ntest">3,610</b><span>people in the independent test survey</span></div>
+    </div>
+    <div class="figs">
+      <figure><img src="img/calibration.png" alt="Calibration plot: predicted probability against the observed proportion with periodontitis in the 2013–2014 test set; points lie close to the diagonal, slightly below it between 40% and 80%." loading="lazy" width="750" height="840"><figcaption>Calibration: do the percentages match reality?</figcaption></figure>
+      <figure><img src="img/roc_curves.png" alt="ROC curves of logistic regression, random forest, gradient boosting and the final calibrated model on the 2013–2014 test set; all have an AUC of about 0.78." loading="lazy" width="750" height="750"><figcaption>Discrimination: three model types perform almost identically</figcaption></figure>
+      <figure><img src="img/decision_curve.png" alt="Decision curve: the model gives more net benefit than referring everyone or no one for threshold probabilities between about 10% and 80%." loading="lazy" width="825" height="600"><figcaption>Usefulness: net benefit compared with referring everyone</figcaption></figure>
+    </div>
+    <div class="prose">
+      <h3>Limits you should know</h3>
+      <ul>
+        <li>It was built on adults in the United States. How well it works in other countries is not yet known.</li>
+        <li>It estimates whether gum disease is present <i>now</i>, not your future risk.</li>
+        <li>On average it slightly over-estimates: in the test survey, for every 100 cases it expected, about <span data-metric="oe">90</span> were found
+          (about <span data-metric="oe_pop">80</span> for the US adult population as a whole). Treat the percentage as a guide, and the risk band as the message.</li>
+        <li>It is less accurate for people aged 65 and over, people with diabetes and people who did not finish high school — groups that are also at higher risk.</li>
+        <li>Only the original English survey questions were tested; translated versions have not been validated.</li>
+        <li>It has not been tested in dental clinics or followed over time. It is not a medical device.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="info" id="about" aria-labelledby="h-about">
+    <h2 id="h-about">About PerioRisk</h2>
+    <div class="prose">
+      <h3>Why it exists</h3>
+      <p>About four in ten US adults aged 30 and over who have teeth have periodontitis, and it is often painless until late. A full gum examination needs a dental visit;
+        a short, validated questionnaire can help people decide to have one and helps researchers estimate gum disease in surveys without examinations.</p>
+      <h3>How it was built</h3>
+      <p>Open NHANES data (CDC/NCHS, public domain) → the CDC/AAP case definition applied to every measured site between the teeth (wisdom teeth excluded) → three model types compared by cross-validation →
+        gradient boosting with probability calibration → one test on a later survey cycle, including calibration, decision-curve, subgroup and survey-weighted analyses,
+        reported following TRIPOD+AI. The whole pipeline re-runs with one command and reproduces the published model exactly.</p>
+      <h3>Privacy</h3>
+      <p>The model runs inside this page. Your answers are not uploaded, stored, logged or tracked — there are no cookies and no analytics. Closing the tab erases them.</p>
+      <h3>For researchers and developers</h3>
+      <pre><code>pip install periorisk
+
+import periorisk
+r = periorisk.predict(age=58, sex="male", smoking="current",
+                      gum_health="fair", loose_teeth="yes", floss_days=0)
+print(r.percent, r.band)            # estimate and risk band
+periorisk.recalibrate(r.probability, target_prevalence=0.30)</code></pre>
+      <p>Source code, results report, model card and TRIPOD+AI checklist: <a href="https://github.com/Hezarani/periorisk" rel="noopener">github.com/Hezarani/periorisk</a>.
+        To cite PerioRisk, use the “Cite this repository” button on GitHub.</p>
+      <h3>Author</h3>
+      <p>Hossein Boustani Hezarani, DDS · <a href="https://orcid.org/0009-0007-8481-0498" rel="noopener">ORCID 0009-0007-8481-0498</a> · part of the open <i>DentGit</i> dental tools.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p><b>PerioRisk</b> · model <span data-metric="version">1.0.0</span> · MIT licence · NHANES data: CDC/NCHS (public domain).</p>
+  <p>Educational and research tool. It does not diagnose disease and is not a substitute for a dental examination.</p>
+  <p class="no-print"><a href="https://github.com/Hezarani/periorisk/blob/main/MODEL_CARD.md" rel="noopener">Model card</a> ·
+    <a href="https://github.com/Hezarani/periorisk/blob/main/reports/results.md" rel="noopener">Full results</a> ·
+    <a href="https://github.com/Hezarani/periorisk/issues" rel="noopener">Report a problem</a></p>
+</footer>
+
+<p class="sr-only" id="announce" aria-live="polite"></p>
+<div class="dock" id="dock" role="region" aria-label="Progress">
+  <div class="dock-in">
+    <div class="progress"><div class="label" id="progress-label" aria-live="polite">0 of 14 answered</div><div class="track"><div class="fill" id="progress-fill"></div></div></div>
+    <button type="button" class="btn primary" id="go" aria-disabled="true">See my result</button>
+  </div>
+</div>
+
+<script src="model.js"></script>
+<script src="periorisk.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

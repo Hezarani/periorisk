@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "periorisk"
+version = "1.0.0"
+description = "Periodontitis risk screening from 14 self-reported questions: an open, temporally validated, calibrated model (NHANES 2009-2014) with a dependency-free Python package and a private in-browser app."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Hossein Boustani Hezarani" }]
+dependencies = []
+keywords = [
+  "periodontitis", "periodontal disease", "gum disease", "screening", "risk prediction",
+  "self-report", "NHANES", "CDC/AAP case definition", "clinical prediction model", "TRIPOD+AI",
+  "calibration", "dentistry", "dental public health", "machine learning",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Healthcare Industry",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Scientific/Engineering :: Medical Science Apps.",
+  "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.urls]
+Homepage = "https://github.com/Hezarani/periorisk"
+Documentation = "https://github.com/Hezarani/periorisk#readme"
+Repository = "https://github.com/Hezarani/periorisk"
+"Live demo" = "https://hezarani.github.io/periorisk/"
+Issues = "https://github.com/Hezarani/periorisk/issues"
+Changelog = "https://github.com/Hezarani/periorisk/blob/main/CHANGELOG.md"
+
+[project.scripts]
+periorisk = "periorisk.cli:main"
+
+[tool.setuptools]
+packages = ["periorisk", "periorisk.data"]
+
+[tool.setuptools.package-data]
+periorisk = ["py.typed"]
+"periorisk.data" = ["model.json"]
+
+[tool.pytest.ini_options]
+pythonpath = [".", "tests"]
+testpaths = ["tests"]

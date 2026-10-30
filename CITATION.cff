@@ -1,0 +1,68 @@
+cff-version: 1.2.0
+message: "If you use PerioRisk in your research, please cite it as below."
+title: "PerioRisk: periodontitis risk screening from self-reported questions"
+abstract: >-
+  PerioRisk estimates the probability of moderate or severe periodontitis (CDC/AAP surveillance case
+  definition) from 14 self-reported questions. A calibrated gradient-boosting model was developed on
+  NHANES 2009-2012 (n = 7,050) and temporally validated on NHANES 2013-2014 (n = 3,610; AUC 0.781,
+  95% CI 0.766-0.796; calibration slope 0.91), with decision-curve, subgroup and survey-weighted
+  analyses reported following TRIPOD+AI. The fitted model is exported to a portable JSON format and
+  re-implemented in pure Python and JavaScript, reproducing scikit-learn's predictions to within
+  1e-12, and ships as a dependency-free Python package, a command-line tool and a private
+  in-browser application. The pipeline reproduces the published model exactly from public data.
+type: software
+authors:
+  - family-names: "Boustani Hezarani"
+    given-names: "Hossein"
+    orcid: "https://orcid.org/0009-0007-8481-0498"
+    affiliation: "Independent researcher, Ankara, Türkiye"
+version: "1.0.0"
+date-released: "2026-10-29"
+license: MIT
+repository-code: "https://github.com/Hezarani/periorisk"
+url: "https://hezarani.github.io/periorisk/"
+keywords:
+  - periodontitis
+  - periodontal disease
+  - screening
+  - risk prediction
+  - self-report
+  - NHANES
+  - clinical prediction model
+  - TRIPOD+AI
+  - calibration
+  - dental public health
+references:
+  - type: article
+    title: "Update of the case definitions for population-based surveillance of periodontitis"
+    authors:
+      - family-names: Eke
+        given-names: Paul I.
+      - family-names: Page
+        given-names: Roy C.
+      - family-names: Wei
+        given-names: Liang
+      - family-names: Thornton-Evans
+        given-names: Gina
+      - family-names: Genco
+        given-names: Robert J.
+    journal: "Journal of Periodontology"
+    year: 2012
+    volume: 83
+    issue: 12
+    start: 1449
+    end: 1454
+    doi: "10.1902/jop.2012.110664"
+  - type: article
+    title: "Self-reported measures for surveillance of periodontitis"
+    authors:
+      - family-names: Eke
+        given-names: Paul I.
+      - name: "et al."
+    journal: "Journal of Dental Research"
+    year: 2013
+    volume: 92
+    issue: 11
+    start: 1041
+    end: 1047
+    doi: "10.1177/0022034513505621"
